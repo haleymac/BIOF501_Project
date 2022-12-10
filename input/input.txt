@@ -1,0 +1,1 @@
+This folder is where you should put your input files you would like to run through the workflow. These files will be included in the Student Jupyter Notebook.

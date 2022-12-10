@@ -1,0 +1,1 @@
+This folder will contain the reference genome file in the student Jupyter Notebook. If you wish to run the pipeline on your own dataset, include your reference genome in this folder and update the config file
