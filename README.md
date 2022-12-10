@@ -11,13 +11,13 @@ Repository Contents
 
 **Note that for this project the students in this class have been provided with a Jupyter Notebook Environment to host this workflow in. The Jupyter notebook can be found at: http://class.cidgoh.ca/ .**
 
-**Due to the fact that this workflow can be run on any human .bam file, as well file size constraints on github and because the efficacy of this workflow will be assesed in the student Jupyter notebook, I have decided not to include the single cell whole genome sequencing .bam input files and the reference genome file in this github repository. THEY CAN BE FOUND ALREADY DOWNLOADED IN THE STUDENT JUPYTER NOTEBOOK. If you wish to use these files to run the workflow on your own computer, please reach out to me and I will provide them.**
+**Due to the fact that this workflow can be run on any human .bam file, as as well file size constraints on github and because the efficacy of this workflow will be assesed in the student Jupyter notebook, I have decided not to include the single cell whole genome sequencing .bam input files and the reference genome file in this github repository. THEY CAN BE FOUND ALREADY DOWNLOADED IN THE STUDENT JUPYTER NOTEBOOK. If you wish to use these files to run the workflow on your own computer, please reach out to me and I will provide them.**
 
 ### Directories
 * input: In the student jupyter notebook this will contain .bam files that can be used as input in the pipeline. For more information on the .bam file data included in the notebook see the *data* section. For more information on this folder see the .txt file within it.
-* output: is an empty directory that output files from the workflow can be directed into. For more information on this folder see the .txt file within it.
+* output: Is an empty directory that output files from the workflow can be directed into. For more information on this folder see the .txt file within it.
 * reference_genome: In the student jupyter notebook this will contain the fasta file for the GRCH37-lite human reference genome. For more information on this genome and where to download it see the *data* section. For more information on this folder see the .txt file within it. 
-* output_pics: Contain images used in the *results* section of this README
+* output_pics: Contains images used in the *results* section of this README
 
 ### Files
 * biof501env.yaml: This is a text file that contains the list of dependencies and channels to prioritize downloading them from that are relevant for this workflow. This file can be used to create an environment to run the workflow in. 
@@ -33,9 +33,9 @@ Introduction
 
 ### Background
 
-Alignment of whole genome sequencing (WGS) data to a reference genome is a critical step in many next generation sequencing experiments, and the quality of the resulting data can often impact conclusions drawn from a study. As such, performing quality control on alignment data is an important process to ensure that erroneous conclusions are not being drawn from bad data.1 
+Alignment of whole genome sequencing (WGS) data to a reference genome is a critical step in many next generation sequencing experiments, and the quality of the resulting data can often impact conclusions drawn from a study. As such, performing quality control on alignment data is an important process to ensure that erroneous conclusions are not being drawn from bad data.<sup>1 </sup>
 
-Alignment quality can be assessed through several metrics, with the most used being the average read depth, as well as the percentage of the genome covered at that depth (breadth). Though these two metrics are helpful, other metrics should also be examined as just examining average depth and breadth of sequencing can be misleading. Several factors can skew read depth, such as GC bias, duplicate reads and insert size distribution so these factors should be examined before using any alignment data in further downstream analysis.2,3 
+Alignment quality can be assessed through several metrics, with the most used being the average read depth, as well as the percentage of the genome covered at that depth (breadth). Though these two metrics are helpful, other metrics should also be examined as just examining average depth and breadth of sequencing can be misleading. Several factors can skew read depth, such as GC bias, duplicate reads and insert size distribution so these factors should be examined before using any alignment data in further downstream analysis.<sup>2, 3</sup> 
 
 In addition to ensuring good quality data is used in downstream analysis, alignment quality metrics can also be used to compare and optimize experimental conditions for later experimentation. If one were to compare the quality scores of WGS data one source but with differing experimental conditions, it would likely be possible to ascertain which of the methods used produced better quality alignment data. 
 
@@ -49,11 +49,9 @@ These metrics can also be used to identify the effect of different experimental 
 
 ### Dataset 
 
-Though this pipeline has been designed to run on any human whole genome sequencing aligned .bam file, a dataset has been included in this repository that the pipeline can be run on. The config file has already been set up to run this particular dataset in the provided student environment (see *config* section for more information on config file setup for alternative datasets or environments).
+Though this pipeline has been designed to run on any human whole genome sequencing aligned .bam file, a dataset has been included in the student jupyter notebook that the pipeline can be run on. The config file has already been set up to run this particular dataset in the provided student environment (see *config* section for more information on config file setup for alternative datasets or environments).
 
-The sequence data included in this repository was generated by Laks et al. in 2019 for their paper ‘Clonal Decomposition and DNA Replication States Defined by Scaled Single-Cell Genome Sequencing.’ (DOI: 
-
-[Laks et al. 2019](https://doi.org/10.1016/j.cell.2019.10.026). 
+The sequence data included in this repository was generated by Laks et al. in 2019 for their paper ‘Clonal Decomposition and DNA Replication States Defined by Scaled Single-Cell Genome Sequencing.’ <sup>4</sup>
 
 The cell line used for this project was the GM18507 lymphoblastoid cell line originally from the HapMap Project. For more information see: 
 
