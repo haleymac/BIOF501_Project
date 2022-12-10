@@ -60,10 +60,10 @@ The cell line used for this project was the GM18507 lymphoblastoid cell line ori
 [GM18507 lymphoblastoid cell line](https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=GM18507).
 
 
-Four .bam files containing single cell whole genome sequencing data that has been aligned to the GRCH37-lite version of the human reference genome have been included in the /input folder in this repository. These cells were FACS-sorted by cell-cycle state prior to sequencing, and imaged to ensure they were alive. The individual information for each cell can be accessed in the A90553C_metadata.csv file included in this repository. The four cells included in this repository are all alive. Two of the cells were in G1 prior to sequencing, and two were in S phase. The workflow can be run on these cells to generate alignment quality metrics for each cell, which can then be compared between the two conditions (see *results* section). 
+Four .bam files containing single cell whole genome sequencing data that has been aligned to the GRCH37-lite version of the human reference genome have been included in the /input folder in the student jupyter notebook. These cells were FACS-sorted by cell-cycle state prior to sequencing, and imaged to ensure they were alive. The individual information for each cell can be accessed in the A90553C_metadata.csv file included in this repository. The four cells included in this repository are all alive. Two of the cells were in G1 prior to sequencing, and two were in S phase. The workflow can be run on these cells to generate alignment quality metrics for each cell, which can then be compared between the two conditions (see *results* section). 
 
 
-The reference genome these cell genomes were originally aligned to, and therefore the reference included in this repository to be run with cells in the workflow is the GRCH37-lite version of the human reference genome. It can be downloaded here: 
+The reference genome these cell genomes were originally aligned to, and therefore the reference included in the student Jupyter notebook to be run with cells in the workflow is the GRCH37-lite version of the human reference genome. It can be downloaded here: 
 
 [GRCH37-lite](https://www.bcgsc.ca/downloads/genomes/9606/hg19/1000genomes/bwa_ind/genome)
 
@@ -81,15 +81,15 @@ This workflow was built using Snakemake, a useful tool to create reproducible an
     *Note: Chromosome 22 was chosen arbitrarily as a means to reduce the computational intensity of the workflow
 3. Compress the chromosome 22 .sam files back into .bam files for further processing 
 4. Use GATK tools to produce several quality control metrics that can be used to assess the quality of the alignment. GATK tools include:
-    ..* CollectWgsMetrics: Collects metrics about the fractions of reads that pass base- and mapping-quality filters as well as coverage (read-depth) levels for WGS analyses
-    ..* CollectGCBiasMetrics: Collects information about the relative proportions of guanine (G) and cytosine (C) nucleotides in a sample - this can be used to determine if there is GC bias in an alignment 
-    ..* CollectDuplicateMetrics: Identifies duplicate reads (reads that are mapped to the exact same location) - this can be used to ensure that duplicate reads are not falsely inflating the average sequencing depth 
-    ..* CollectInsertSizeMetrics: Identifies insert size that was used in sequencing - this can show the insert size distribution and can give insight into how library preperation methods can affect sequencing and alignment
+    * CollectWgsMetrics: Collects metrics about the fractions of reads that pass base- and mapping-quality filters as well as coverage (read-depth) levels for WGS analyses
+    * CollectGCBiasMetrics: Collects information about the relative proportions of guanine (G) and cytosine (C) nucleotides in a sample - this can be used to determine if there is GC bias in an alignment 
+    * CollectDuplicateMetrics: Identifies duplicate reads (reads that are mapped to the exact same location) - this can be used to ensure that duplicate reads are not falsely inflating the average sequencing depth 
+    * CollectInsertSizeMetrics: Identifies insert size that was used in sequencing - this can show the insert size distribution and can give insight into how library preperation methods can affect sequencing and alignment
     
 A figure illustrating these key steps:
 *Note: the indexing step appears to be beside the gatk steps because the direct output of the indexing step (a .bai file) is not used as input for the next step, and as such snakemake doesn't register that it is occuring first in the workflow when it creates this workflow image. In actuality this step takes place first as it is a necessary precurser to subsetting the .bam file by chromosome. 
  
-![alt text](link_to_image_on_gihub "Pipeline Overview")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/dag.pdf "Pipeline Overview")
  
  
  ___
