@@ -101,9 +101,9 @@ A figure illustrating these key steps:
  
  Installing this pipeline requires conda and git. Instructions for installing these software can be found at the following links:
  
- [I'm an inline-style link](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
+ [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
  
- [I'm an inline-style link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
  
  
 ### Dependencies 
@@ -222,7 +222,7 @@ This file contains several WGS quality metrics, including MEAN COVERAGE - otherw
 **gc_bias_summary.txt**
 
 The following image is a screenshot of the 'METRICS CLASS' section of the gc_bias_summary.txt file generated from running the workflow on this cell: 
-![alt text](link "GC BIAS METRICS CLASS")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.gc_bias_summary.png "GC BIAS METRICS CLASS")
 
 This file contains several GC bias metrics such as GC_dropout that are useful for assessing the effect of GC bias on alignment. 
 
@@ -230,7 +230,7 @@ This file contains several GC bias metrics such as GC_dropout that are useful fo
 **gc_bias_metrics_chart.pdf**
 
 The following image is the plot generated for the GC bias metrics step in the workflow:
-![alt text](link "GC BIAS CHART")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.gc_bias_metrics_chart.png "GC BIAS CHART")
 
 
 3. CollectDuplicateMetrics
@@ -238,7 +238,7 @@ The following image is the plot generated for the GC bias metrics step in the wo
 **duplicate_metrics.txt**
 
 The following image is a screenshot of the 'METRICS CLASS' section of the duplicate_metrics.txt file generated from running the workflow on this cell: 
-![alt text](link "DUPLICATE METRICS CLASS")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.duplicate_metrics.png "DUPLICATE METRICS CLASS")
 
 This file contains several duplicate reads metrics such as READ_PAIR_DUPLICATES that are useful for assessing the effect of duplicate reads on the average read depth. 
 
@@ -247,14 +247,14 @@ This file contains several duplicate reads metrics such as READ_PAIR_DUPLICATES 
 **insert_metrics.txt**
 
 The following image is a screenshot of the 'METRICS CLASS' section of the insert_metrics.txt file generated from running the workflow on this cell: 
-![alt text](link "INSERT METRICS CLASS")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.insert_metrics.png "INSERT METRICS CLASS")
 
 This file contains several insert distribution metrics such as the MEDIAN_INSERT_SIZE which are useful for assessing the efficacy of library preperation methods on data quality. 
 
 **insert_metrics_histo.pdf***
 
 The following image is the histogram generated for the insert size metrics step of the workflow: 
-![alt text](link "INSERT SIZE HISTOGRAM")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.insert_metrics_histo.png "INSERT SIZE HISTOGRAM")
 
 This plot does an excellent job of illustrating the insert size distribution that was sequenced. 
 
