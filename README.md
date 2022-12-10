@@ -87,7 +87,7 @@ This workflow was built using Snakemake, a useful tool to create reproducible an
     * CollectInsertSizeMetrics: Identifies insert size that was used in sequencing - this can show the insert size distribution and can give insight into how library preperation methods can affect sequencing and alignment
     
 A figure illustrating these key steps:
-*Note: the indexing step appears to be beside the gatk steps because the direct output of the indexing step (a .bai file) is not used as input for the next step, and as such snakemake doesn't register that it is occuring first in the workflow when it creates this workflow image. In actuality this step takes place first as it is a necessary precurser to subsetting the .bam file by chromosome. 
+*Note: the indexing step appears to be beside the gatk steps because the direct output of the indexing step (a .bai file) is not used as input for the next step, and as such snakemake doesn't register that it is occuring first in the workflow when it creates this workflow image. In actuality this step takes place first as it is a necessary precurser to subsetting the .bam file by chromosome.*
  
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/dag.png "Pipeline Overview")
  
