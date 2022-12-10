@@ -23,7 +23,7 @@ Repository Contents
 * biof501env.yaml: This is a text file that contains the list of dependencies and channels to prioritize downloading them from that are relevant for this workflow. This file can be used to create an environment to run the workflow in. 
 * config.yaml: This is a text file that contains user-specified parameters relevant to the workflow. Currently this file contains information necessary to run the workflow on the included data in the provided student environment. 
 * snakefile: Snakemake source code used to run the workflow
-* dag.pdf: Representation of the overall workflow in PDF format. Viewable in web browser.
+* dag.png: Representation of the overall workflow in PNG format. 
 * A90553C_metadata.csv: File containing information about the .bam files included in the input file of this repository. This file contains columns that give information about a single cell's condition prior to sequencing - the cell-call column indicates whether the cell is alive or not (C1 indicates a live cell), and the experimental condtion indicates which cell-cycle phase the cell was in prior to sequencing. 
 
 ___
