@@ -76,26 +76,26 @@ This workflow was built using Snakemake, a useful tool to create reproducible an
 ##### The key steps in the workflow are:
 1. Use samtools to index .bam files 
 2. Create a subset of the .bam files that only includes chromosome 22 and save as a .sam file 
-    *Note: Chromosome 22 was chosen arbitrarily as a means to reduce the computational intensity of the workflow
+    *Note: Chromosome 22 was chosen arbitrarily as a means to reduce the computational intensity of the workflow*
 3. Compress the chromosome 22 .sam files back into .bam files for further processing 
 4. Use GATK tools to produce several quality control metrics that can be used to assess the quality of the alignment. GATK tools include:
-    * CollectWgsMetrics: Collects metrics about the fractions of reads that pass base- and mapping-quality filters as well as coverage (read-depth) levels for WGS analyses
-    * CollectGCBiasMetrics: Collects information about the relative proportions of guanine (G) and cytosine (C) nucleotides in a sample - this can be used to determine if there is GC bias in an alignment 
-    * CollectDuplicateMetrics: Identifies duplicate reads (reads that are mapped to the exact same location) - this can be used to ensure that duplicate reads are not falsely inflating the average sequencing depth 
-    * CollectInsertSizeMetrics: Identifies insert size that was used in sequencing - this can show the insert size distribution and can give insight into how library preperation methods can affect sequencing and alignment
+    * **CollectWgsMetrics:** Collects metrics about the fractions of reads that pass base- and mapping-quality filters as well as coverage (read-depth) levels for WGS analyses
+    * **CollectGCBiasMetrics**: Collects information about the relative proportions of guanine (G) and cytosine (C) nucleotides in a sample - this can be used to determine if there is GC bias in an alignment 
+    * **CollectDuplicateMetrics:** Identifies duplicate reads (reads that are mapped to the exact same location) - this can be used to ensure that duplicate reads are not falsely inflating the average sequencing depth 
+    * **CollectInsertSizeMetrics:** Identifies insert size that was used in sequencing - this can show the insert size distribution and can give insight into how library preperation methods can affect sequencing and alignment
     
 A figure illustrating these key steps:
-*Note: the indexing step appears to be beside the gatk steps because the direct output of the indexing step (a .bai file) is not used as input for the next step, and as such snakemake doesn't register that it is occuring first in the workflow when it creates this workflow image. In actuality this step takes place first as it is a necessary precurser to subsetting the .bam file by chromosome.*
- 
+
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/dag.png "Pipeline Overview")
- 
+
+*Note: the indexing step appears to be beside the gatk steps because the direct output of the indexing step (a .bai file) is not used as input for the next step, and as such snakemake doesn't register that it is occuring first in the workflow when it creates this workflow image. In actuality this step takes place first as it is a necessary precurser to subsetting the .bam file by chromosome.*
  
  ___
  
  Installation and Running of the Workflow
  ---
  
- *Note: The course instructors have provided a Student Jupyter Notebook to host the workflow in. The installation/usage commands differ for this environment vrs. the  
+ *Note: Because the student jupyter notebook environment has already been set up, the installation instructions for this environment vrs. your home computer are different. Both have been included in seperate sections below* 
  
  Installing this pipeline requires conda and git. Instructions for installing these software can be found at the following links:
  
@@ -106,11 +106,11 @@ A figure illustrating these key steps:
  
 ### Dependencies 
  
- The dependencies and channels they can be downloaded from that this workflow relies upon are listed in the biof501env.yaml file included in this repository. 
+ The dependencies and channels that this workflow relies upon are listed in the biof501env.yaml file included in this repository. 
  
 ### Installation
 
-##### On Your Own Computer:
+#### On Your Own Computer:
 To access this workflow on your own computer, open a terminal and navigate to where you would like to save the repository. Then clone the repository by typing: 
 
 ```
@@ -137,7 +137,7 @@ conda activate biof501env
 
 You're now ready to move on to the *config* step!
 
-##### In the BIOF501 Student Jupyter Notebook
+#### In the BIOF501 Student Jupyter Notebook
 
 The environment containing all of the necessary dependencies for this workflow has already been created in the instructor-provided student jupyter notebook. 
 
@@ -156,10 +156,13 @@ You're now ready to move on to the *config* step!
 
 This workflow has been designed to run for any human whole genome sequencing .bam files. The parameters the work flow will run on are set by the user in a config.yaml file. This config.yaml file has several mandatory field that must be filled prior to running the workflow, including:
 
-..* input_dir: user must specify path to an input directory containing .bam files they would like to run through the workflow 
-..* output_dir: user must specify path to an output directory they would like their output files to be generated in
-..* reference_genome: user must specify path to the downloaded reference genome .fa file that their .bam files were originally aligned to - **this MUST be the same reference genome version that was used for alignment for the workflow to work properly**
-..* sample_ids: user must specify the file names (without .bam extention) that they would like to run through the workflow (ex. to run SA928-A90553C-R44-C19.bam through the workflow, SA928-A90553C-R44-C19 must be included in the config file in the sample_id section)
+* **input_dir:** user must specify path to an input directory containing .bam files they would like to run through the workflow 
+
+* **output_dir:** user must specify path to an output directory they would like their output files to be generated in
+
+* **reference_genome:** user must specify path to the downloaded reference genome .fa file that their .bam files were originally aligned to - **this MUST be the same reference genome version that was used for alignment for the workflow to work properly**
+
+* **sample_ids:** user must specify the file names (without .bam extention) that they would like to run through the workflow (ex. to run SA928-A90553C-R44-C19.bam through the workflow, SA928-A90553C-R44-C19 must be included in the config file in the sample_id section)
 
 The config.yaml file included in this repository has already been configured to run the workflow on all .bam files included in this repository. If the user would like to run the workflow on these samples, they should skip this step. 
 
@@ -185,28 +188,31 @@ Each GATK step of this workflow produces it's own output of file(s) containing q
 Output Files for each step:
 
 1. CollectWgsMetrics
-    ..* wgs_metrics.txt: A text file containing whole genome sequencing metrics such as read depth and coverage breadth. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.wgs_metrics.txt"
+    * **wgs_metrics.txt:** A text file containing whole genome sequencing metrics such as read depth and coverage breadth. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.wgs_metrics.txt"
 
 2. CollectGCBiasMetrics
-    ..* gc_bias_metrics.txt: A text file containing gc bias metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_metrics.txt"
-    ..* gc_bias_metrics_chart.pdf: A pdf file containing a GB bias plot of all reads. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_metrics_chart.pdf"
-    ..* gc_bias_summary.txt:  A text file containing a summary of the GC bias metrics for all reads. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_summary.txt"
+    * **gc_bias_metrics.txt:** A text file containing gc bias metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_metrics.txt"
+    
+    * **gc_bias_metrics_chart.pdf:** A pdf file containing a GB bias plot of all reads. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_metrics_chart.pdf"
+    
+    * **gc_bias_summary.txt:**  A text file containing a summary of the GC bias metrics for all reads. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.gc_bias_summary.txt"
   
 3. CollectDuplicateMetrics
-    ..* duplicate_metrics.txt: A text file containing duplicate reads metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.duplicate_metrics.txt"
+    * **duplicate_metrics.txt:** A text file containing duplicate reads metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.duplicate_metrics.txt"
 
 4. CollectInsertSizeMetrics
-    ..* insert_metrics.txt: A text file containing insert size metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.insert_metrics.txt"
-    ..* insert_metrics_histo.pdf: A pdf containing a histogram of the distribution of insert size sequenced. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.insert_metrics_histo.pdf"
+    * **insert_metrics.txt:** A text file containing insert size metrics. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.insert_metrics.txt"
+    
+    * **insert_metrics_histo.pdf:** A pdf containing a histogram of the distribution of insert size sequenced. These files will be in the format "output_directory_specified_in_config/sample_id_specified_in_config.insert_metrics_histo.pdf"
 
 
 ### Results
-*These Results were generated from running the workflow on the .bam files included in this workflow*
+*These Results were generated from running the workflow on the .bam files included in the student jupyter notebook*
 
 To illustrate the results without overwhelming a viewer, I have included the result files from only one of the included samples run through the workflow - those from cell SA928-A90553C-R44-C19 which was in G1 at time of sequencing. 
 
 Output by GATK step for cell SA928-A90553C-R44-C19:
-1. CollectWgsMetrics
+### 1. CollectWgsMetrics
 
 **wgs_metrics.txt**
 
@@ -215,7 +221,7 @@ The following image is a screenshot of the 'METRICS CLASS' section of the wgs_me
 
 This file contains several WGS quality metrics, including MEAN COVERAGE - otherwise called average depth. These metrics are useful for understanding the overall quality of alignment.  
 
-2. CollectGCBiasMetrics
+### 2. CollectGCBiasMetrics
 
 **gc_bias_summary.txt**
 
@@ -225,13 +231,13 @@ The following image is a screenshot of the 'METRICS CLASS' section of the gc_bia
 This file contains several GC bias metrics such as GC_dropout that are useful for assessing the effect of GC bias on alignment. 
 
 
-**gc_bias_metrics_chart.pdf**
+### **gc_bias_metrics_chart.pdf**
 
 The following image is the plot generated for the GC bias metrics step in the workflow:
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.gc_bias_metrics_chart.png "GC BIAS CHART")
 
 
-3. CollectDuplicateMetrics
+### 3. CollectDuplicateMetrics
 
 **duplicate_metrics.txt**
 
@@ -240,7 +246,7 @@ The following image is a screenshot of the 'METRICS CLASS' section of the duplic
 
 This file contains several duplicate reads metrics such as READ_PAIR_DUPLICATES that are useful for assessing the effect of duplicate reads on the average read depth. 
 
-4. CollectInsertSizeMetrics
+### 4. CollectInsertSizeMetrics
 
 **insert_metrics.txt**
 
