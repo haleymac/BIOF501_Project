@@ -17,6 +17,7 @@ Repository Contents
 * input: In the student jupyter notebook this will contain .bam files that can be used as input in the pipeline. For more information on the .bam file data included in the notebook see the *data* section. For more information on this folder see the .txt file within it.
 * output: is an empty directory that output files from the workflow can be directed into. For more information on this folder see the .txt file within it.
 * reference_genome: In the student jupyter notebook this will contain the fasta file for the GRCH37-lite human reference genome. For more information on this genome and where to download it see the *data* section. For more information on this folder see the .txt file within it. 
+* output_pics: Contain images used in the *results* section of this README
 
 ### Files
 * biof501env.yaml: This is a text file that contains the list of dependencies and channels to prioritize downloading them from that are relevant for this workflow. This file can be used to create an environment to run the workflow in. 
@@ -212,7 +213,7 @@ Output by GATK step for cell SA928-A90553C-R44-C19:
 **wgs_metrics.txt**
 
 The following image is a screenshot of the 'METRICS CLASS' section of the wgs_metrics.txt file generated from running the workflow on this cell. 
-![alt text](link "WGS METRICS CLASS")
+![alt text](https://github.com/haleymac/BIOF501_Project/output_pics/R44-C19.wgs_metrics.png "WGS METRICS CLASS")
 
 This file contains several WGS quality metrics, including MEAN COVERAGE - otherwise called average depth. These metrics are useful for understanding the overall quality of alignment.  
 
