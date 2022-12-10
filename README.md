@@ -213,7 +213,7 @@ Output by GATK step for cell SA928-A90553C-R44-C19:
 **wgs_metrics.txt**
 
 The following image is a screenshot of the 'METRICS CLASS' section of the wgs_metrics.txt file generated from running the workflow on this cell. 
-![alt text](https://github.com/haleymac/BIOF501_Project/output_pics/R44-C19.wgs_metrics.png "WGS METRICS CLASS")
+![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.wgs_metrics.png "WGS METRICS CLASS")
 
 This file contains several WGS quality metrics, including MEAN COVERAGE - otherwise called average depth. These metrics are useful for understanding the overall quality of alignment.  
 
