@@ -212,6 +212,7 @@ Output Files for each step:
 To illustrate the results without overwhelming a viewer, I have included the result files from only one of the included samples run through the workflow - those from cell SA928-A90553C-R44-C19 which was in G1 at time of sequencing. 
 
 Output by GATK step for cell SA928-A90553C-R44-C19:
+
 ### 1. CollectWgsMetrics
 
 **wgs_metrics.txt**
@@ -220,6 +221,8 @@ The following image is a screenshot of the 'METRICS CLASS' section of the wgs_me
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.wgs_metrics.png "WGS METRICS CLASS")
 
 This file contains several WGS quality metrics, including MEAN COVERAGE - otherwise called average depth. These metrics are useful for understanding the overall quality of alignment.  
+
+
 
 ### 2. CollectGCBiasMetrics
 
@@ -237,6 +240,7 @@ The following image is the plot generated for the GC bias metrics step in the wo
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.gc_bias_metrics_chart.png "GC BIAS CHART")
 
 
+
 ### 3. CollectDuplicateMetrics
 
 **duplicate_metrics.txt**
@@ -245,6 +249,8 @@ The following image is a screenshot of the 'METRICS CLASS' section of the duplic
 ![alt text](https://github.com/haleymac/BIOF501_Project/blob/main/output_pics/R44-C19.duplicate_metrics.png "DUPLICATE METRICS CLASS")
 
 This file contains several duplicate reads metrics such as READ_PAIR_DUPLICATES that are useful for assessing the effect of duplicate reads on the average read depth. 
+
+
 
 ### 4. CollectInsertSizeMetrics
 
